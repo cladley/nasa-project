@@ -1,5 +1,6 @@
-const DEFAULT_PAGE_NUMBER = 1;
+// Mongo will return all documents if limit is 0
 const DEFAULT_PAGE_LIMIT = 0;
+const DEFAULT_PAGE_NUMBER = 1;
 
 function getPagination(query) {
   const page = Math.abs(query.page) || DEFAULT_PAGE_NUMBER;

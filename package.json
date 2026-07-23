@@ -1,20 +1,29 @@
 {
   "name": "nasa-project",
   "version": "1.0.0",
-  "description": "NASA Mission Control Project",
+  "description": "The completed version of our NASA project from [Complete Node.js Developer: Zero to Mastery](https://academy.zerotomastery.io/a/aff_jqtq5631/external?affcode=441520_1jw4f2ay).",
   "main": "index.js",
   "scripts": {
-    "install-server": "npm install --prefix server",
-    "install-client": "npm install --prefix client",
+    "install-server": "cd server && npm install",
+    "install-client": "cd client && npm install",
     "install": "npm run install-server && npm run install-client",
-    "server": "npm run watch --prefix server",
-    "client": "npm start --prefix client",
+    "server": "cd server && npm run watch",
+    "client": "cd client && npm start",
     "watch": "npm run server & npm run client",
-    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "deploy": "npm run build --prefix client && npm run watch --prefix server",
     "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
-    "test": "npm test --prefix server && npm test --prefix client"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/odziem/nasa-project.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/odziem/nasa-project/issues"
+  },
+  "homepage": "https://github.com/odziem/nasa-project#readme"
 }
