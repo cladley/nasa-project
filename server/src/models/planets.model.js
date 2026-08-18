@@ -5,13 +5,15 @@ const planets = require("./planets.mongo");
 
 function loadPlanetsData() {
   return new Promise((resolve, reject) => {
+    const savePromises = [];
+
     fs.createReadStream(
       path.join(__dirname, "..", "..", "data", "/kepler_data.csv"),
     )
       .pipe(parse({ columns: true, comment: "#" }))
       .on("data", async (data) => {
         if (isHabitablePlanet(data)) {
-          await savePlanet(data);
+          savePromises.push(savePlanet(data));
         }
       })
       .on("error", (err) => {
@@ -19,6 +21,7 @@ function loadPlanetsData() {
         reject(err);
       })
       .on("end", async () => {
+        await Promise.all(savePromises);
         const countPlanetsFound = (await getAllPlanets()).length;
         console.log(`${countPlanetsFound} habitable planets found!`);
         resolve();
