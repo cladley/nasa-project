@@ -9,7 +9,6 @@ jobs:
     env:
       CI: true
       MONGO_URL: mongodb://127.0.0.1:27017
-      MONGO_DB_NAME: nasa
     strategy:
       matrix:
         node-version: [22.x, 24.x]
